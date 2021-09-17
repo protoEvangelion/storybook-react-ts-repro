@@ -1,48 +1,39 @@
+// import React from 'react'
+
+// import { Meta, Story } from '@storybook/react'
+
+// import { TooltipDate } from '.'
+// import type { IDateTooltipProps } from './TooltipDate'
+
+// export default {
+//   title: 'Components/TooltipDate',
+//   component: TooltipDate
+// } as Meta<IDateTooltipProps>
+
+// const Template: Story<IDateTooltipProps> = (args) => <TooltipDate {...args} date={new Date()}><div>Today</div></TooltipDate>
+
+// export const Primary = Template.bind({});
 import React from 'react';
-import './button.css';
+import { Story, Meta } from '@storybook/react';
 
-interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
-}
+import { default as Button, IButtonProps } from './TooltipDate';
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {label}
-    </button>
-  );
-};
+export default {
+  title: 'Example/Button',
+  component: Button,
+  // argTypes: {
+  //   backgroundColor: { control: 'color' },
+  //   label: { defaultValue: 'Button' },
+  // },
+} as Meta;
+
+const Template: Story<IButtonProps> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({});
+
+// Primary.args = {
+//   label: 'foo',
+//   size: 'large',
+// };
+
+// export const Secondary = Template.bind({});
